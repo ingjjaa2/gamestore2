@@ -1,0 +1,69 @@
+@import './settings';
+
+
+html, body{
+    // height: 100vh;
+    //width: 100vw;
+    background-color:$backGround;
+    // padding-bottom: 20px;
+}
+
+main {
+    width: 100%;
+}
+
+.snackbarContainer{
+    align-items: center;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 1px 1px 3px black;
+    color:white;
+    display: grid;
+    grid-template-columns: 1fr 15px;
+    font-weight: lighter;
+    font-size: small;
+    min-width: 120px;
+    max-width: 200px;
+    left: 5px;
+    position: absolute;
+    padding: 10px 10px 10px 10px;
+    top: 10px;
+}
+
+.snackbarContainerClose{
+    align-items: center;
+    background-color: white;
+    border-radius: 40px;
+    cursor: pointer;
+    display: grid;
+    justify-items: center;
+    height: 15px;
+    &:hover{
+        background-color: $yellowSnackBar;
+    }
+    &:active{
+        box-shadow: 1px 2px 3px black;
+    }
+}
+
+.snackbarInfo{
+    background-color: $LightBlueSnackBar;
+}
+
+.snackbarRed{
+    background-color: red;
+}
+
+.snackbarSuccess{
+    background-color: $GreenDarkSnackBar;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
