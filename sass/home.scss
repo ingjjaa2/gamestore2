@@ -1,0 +1,123 @@
+.homeWebRoot{
+    background-color: $backGround;
+    display: grid;
+    color: white;
+    column-gap: 20px;
+    grid-template-columns: 200px 1fr;
+    height: 100vh;
+    // overflow-y: hidden;
+}
+
+.homeWebRootLeftSide{
+    align-content: flex-start;
+    display: grid;
+    margin: 10px;
+    row-gap: 10px;
+}
+
+.homeWebLogo{
+    background-color: $redBackGround;
+    border-radius: 10px;
+    display: grid;    
+    height: 90px;
+    width: 190px;
+}
+
+.homeWebMenu{
+    background-color: $redBackGround;
+    border-radius: 10px;
+    color: white;
+    display: grid;
+    row-gap: 10px;
+    padding: 15px 10px 15px 10px;
+}
+
+.homeWebMenuElement{
+    border-bottom: 1px dotted $White;
+    display: grid;
+    cursor: pointer;
+    font-size: medium;
+    grid-template-columns: 20px 1fr;
+    &:hover{
+        background-color: $menuElement;
+        border-radius: 10px;
+        padding: 5px;
+        zoom: 1.1;
+    }
+    &:active{
+        background-color: $Red;
+    }
+}
+
+.homeWebCardsContainer{
+    background-color: $redBackGround;
+    border-radius: 10px;
+    display: grid;
+    justify-content: center;
+    row-gap: 10px;
+    padding: 5px;
+}
+
+.homeCard{
+    align-content: center;
+    background-color: white;
+    // background-image: url('/images/Optimized-Sport.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    font-size: small;
+    color: white;
+    cursor: pointer;
+    display: grid;
+    height: 35px;
+    text-shadow: 1px 1px 2px black;
+    opacity: 0.8;
+    width: 170px;
+    &:hover{
+        box-shadow: 1px 1px 3px grey;
+        opacity: 1;
+        zoom: 1.1;
+    };
+    &:active{
+        box-shadow: 1px 1px 6px white;
+        opacity: 1;
+        // zoom: 1.1;
+
+    }
+
+}
+
+.homeCardActive{
+    align-content: center;
+    background-color: white;
+    // background-image: url('/images/Optimized-Sport.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    font-size: small;
+    color: white;
+    cursor: pointer;
+    display: grid;
+    height: 35px;
+    text-shadow: 1px 1px 2px black;
+    opacity: 0.8;
+    width: 170px;
+
+    box-shadow: 1px 1px 6px white;
+    opacity: 1;
+    zoom: 1.1;
+}
+
+.homeWebFooterImage{
+    background-color: $redBackGround;
+    border-radius: 10px;
+    display: grid;    
+    padding: 10px;
+}
+
+.homeWebRootRightSide{
+    display: grid;
+    grid-template-rows: 50px 120px 30px 1fr;
+    row-gap: 20px;
+}
+

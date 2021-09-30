@@ -25,7 +25,7 @@ const AppLayout = ({children}:Props) => {
             <meta name="description" content="Task" />
             <link rel="icon" href="/favicon.ico" />
         </Head>
-        <main className="">
+        <main>
             {children}
         </main>
         {alertMessage.show&&(

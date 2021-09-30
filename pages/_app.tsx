@@ -1,10 +1,9 @@
-import '../sass/_setting.scss';
+import '../sass/styles.scss';
 import type { AppProps } from 'next/app'
 import AppLayout from '../theme';
 import {AppContext,useContextValue} from '../context/appContext';
 import {ApolloProvider} from '@apollo/client';
 import {apolloClient} from '../Apollo/apoloClient';
-
 
 
 function MyApp({ Component, pageProps }: AppProps) {
