@@ -1,0 +1,73 @@
+.cardGameContainer{
+    background-color: $redBackGround;
+    border-radius: 10px;
+    display: grid;
+    grid-template-rows: 1fr 50px;
+    cursor: pointer;
+    height: 200px;
+    padding: 10px;
+    width: 130px;
+    &:hover{
+        zoom: 1.07;
+        box-shadow: 1px 1px 10px lightgoldenrodyellow;
+    }
+    &:active{
+        background-color: $menuElement; 
+    }
+}
+
+.cardGameName{
+    align-self: center;
+    font-size: small;
+    text-align: center;
+    overflow: hidden;
+}
+
+.cardgameImage{
+    background-color: red;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    align-content: space-between;
+    display: grid;
+}
+
+.cardGameFotter{
+    align-content: space-between;
+    background-color: black;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
+    padding: 2px 3px 2px 3px;
+    opacity: 0.6;
+}
+
+.cardGameFotterLeft{
+    align-items: flex-start;
+    display: grid;
+    column-gap: 5px;
+    grid-auto-flow: column;
+    width: 22px;
+}
+
+.cardGameFotterRight{
+    justify-items: flex-end;
+    display: grid;    
+}
+
+.cardGameHeader{
+    display: grid;
+    justify-content: flex-end;
+}
+
+.cardGameHeaderStartBox{
+    align-items: center;
+    background-color: $redBackGround;
+    border-bottom-left-radius: 10px;
+    display: grid;
+    grid-auto-flow: column;
+    font-size: smaller;
+    justify-items: center;
+    padding: 3px;
+    width: 45px;
+}

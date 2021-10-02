@@ -4,10 +4,19 @@
 html, body{
     // height: 100vh;
     //width: 100vw;
+    font-family: "BlackOpsOne-Regular";
     background-color:$backGround;
     padding: 0;
     margin: 0;
     // padding-bottom: 20px;
+}
+
+@font-face{
+    font-family: "BlackOpsOne-Regular";
+    src:url("/fonts/BlackOpsOne-Regular.ttf");
+    font-style: normal;
+    font-weight: 400px;
+    font-display: swap;
 }
 
 main {
@@ -69,6 +78,21 @@ main {
               user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
   }
+
+
+.scrollContainer{
+
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar-thumb{
+        background-color: $Black3;
+        border-radius: 5px;
+    }
+    &::-webkit-scrollbar{
+        background-color: transparent;
+        width: 7px;
+    }
+}
 
 .test{
     background-color: red;

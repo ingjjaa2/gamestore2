@@ -5,7 +5,8 @@
     column-gap: 20px;
     grid-template-columns: 200px 1fr;
     height: 100vh;
-    // overflow-y: hidden;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .homeWebRootLeftSide{
@@ -36,7 +37,7 @@
     border-bottom: 1px dotted $White;
     display: grid;
     cursor: pointer;
-    font-size: medium;
+    font-size: small;
     grid-template-columns: 20px 1fr;
     &:hover{
         background-color: $menuElement;
@@ -117,7 +118,16 @@
 
 .homeWebRootRightSide{
     display: grid;
-    grid-template-rows: 50px 120px 30px 1fr;
-    row-gap: 20px;
+    grid-template-rows: 35px 150px 30px 1fr;
+    row-gap: 15px;
+}
+
+.listOfgames{
+    column-gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    row-gap: 8px;
+    height: calc(90vh - 35px - 150px - 30px);
 }
 

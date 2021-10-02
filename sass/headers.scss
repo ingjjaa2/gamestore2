@@ -1,0 +1,85 @@
+.headerWebRoot{
+    align-content: center;
+    display: grid;
+    column-gap: 10px;
+    grid-auto-flow: column;
+    grid-template-columns: 0.40fr 1fr 25px 25px;
+    padding: 0px 5px 0px 5px;
+}
+
+
+.searchBarContainer{
+    background-color: $Red;
+    border-radius: 2px;
+    display: grid;
+    grid-template-columns: 1fr 25px;
+    column-gap: 5px;
+    padding: 2px 3px 2px 3px;
+    max-width: 170px;
+}
+
+.searchBarContainerIcon{
+    border-radius: 10px;
+    cursor: pointer;
+    display: grid;
+    justify-content: center;
+    padding: 2px;
+    
+    &:hover{
+        background-color: $redBackGround;
+    }
+    
+    &:active{
+        background-color: $lightRed;
+        // box-shadow: 1px 1px 5px white;
+    }
+
+
+}
+
+.inputNoneClase{
+    background-color: transparent;
+    border: none;
+    color: white;
+    outline: transparent;
+    width: 100%;
+}
+
+.headersIcons{
+    align-content: center;
+    background-color: $Red;
+    border-radius: 5px;
+    cursor: pointer;
+    display: grid;
+    justify-content: center;
+    padding: 2px;
+    &:hover{
+        background-color: $lightRed;
+    }
+    &:active{
+        background-color: $Black3;
+        zoom: 0.8;
+    }
+}
+
+.headersmenuContainer{
+    cursor: pointer;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content:space-around;
+}
+
+.headerUnActiveElement{
+    font-size: small;
+    color: whitesmoke;
+    &:hover{
+        // font-size: medium;
+        color: $Red;
+    }
+}
+
+.headerActiveElement{
+    font-size: medium;
+    color: white;
+    border-bottom: 1px solid $Red;
+}

@@ -1,0 +1,35 @@
+.barraFiltrosContainer{
+    align-content: center;
+    background-color: $redBackGround;
+    border-radius: 5px;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.barraFiltrosSubiconosContainer{
+    align-content: center;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: left;
+}
+
+.iconosContainer{
+    align-content: center;
+    display: grid;
+    column-gap: 7px;
+    grid-auto-flow: column;
+    justify-content: space-between;
+}
+
+.iconUnActive{
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.iconActive{
+    cursor: pointer;
+    opacity: 1;
+}

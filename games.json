@@ -1,0 +1,91 @@
+[
+    {
+        "id":"1",
+        "name":"Final Fantasy VII remake",
+        "imageUrl":"https://i.blogs.es/d6590b/finalfantasyvii/450_1000.jpg",
+        "igdbID":1946,
+        "isOnCd":true,
+        "isOnDigital":false,
+        "isNew":false,
+        "platform":"ps4",
+        "start":5.4
+    },
+    {
+        "id":"2",
+        "name":"assassins creed valhalla",
+        "imageUrl":"https://images.igdb.com/igdb/image/upload/t_cover_big/co2ed3.png",
+        "igdbID":1946,
+        "isOnCd":true,
+        "isOnDigital":true,
+        "isNew":true,
+        "platform":"ps3",
+        "start":6
+    },
+    {
+        "id":"3",
+        "name":"Fifa 22",
+        "imageUrl":"https://images.igdb.com/igdb/image/upload/t_cover_big/co3dsm.png",
+        "igdbID":1946,
+        "isOnCd":true,
+        "isOnDigital":true,
+        "isNew":false,
+        "platform":"ps4",
+        "start":3.8
+    },
+    {
+        "id":"4",
+        "name":"God of War",
+        "imageUrl":"https://images.igdb.com/igdb/image/upload/t_cover_big/co1tmu.png",
+        "igdbID":1946,
+        "isOnCd":true,
+        "isOnDigital":false,
+        "isNew":false,
+        "platform":"ps4",
+        "start":5.0
+    },
+    {
+        "id":"5",
+        "name":"Call Of Duty: Modern Warfare",
+        "imageUrl":"https://images.igdb.com/igdb/image/upload/t_cover_big/co1rsg.png",
+        "igdbID":1946,
+        "isOnCd":true,
+        "isOnDigital":false,
+        "isNew":false,
+        "platform":"pc",
+        "start":6
+    },
+    {
+        "id":"6",
+        "name":"Marvel's Spider-Man",
+        "imageUrl":"https://images.igdb.com/igdb/image/upload/t_cover_big/co1r77.png",
+        "igdbID":1946,
+        "isOnCd":true,
+        "isOnDigital":false,
+        "isNew":false,
+        "platform":"switch",
+        "start":5.4
+    },
+    {
+        "id":"7",
+        "name":"Horizon Zero Dawn",
+        "imageUrl":"https://images.igdb.com/igdb/image/upload/t_cover_big/co2una.png",
+        "igdbID":1946,
+        "isOnCd":true,
+        "isOnDigital":true,
+        "isNew":false,
+        "platform":"ps4",
+        "start":6
+    },
+    {
+        "id":"8",
+        "name":"Assassin's Creed: Origins",
+        "imageUrl":"https://images.igdb.com/igdb/image/upload/t_cover_big/co1rbe.png",
+        "igdbID":1946,
+        "isOnCd":false,
+        "isOnDigital":true,
+        "isNew":false,
+        "platform":"xbox",
+        "start":4
+    }   
+   
+]

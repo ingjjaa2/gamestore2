@@ -1,5 +1,14 @@
-import React,{useState} from 'react';
+import React,{useState,useContext,useEffect} from 'react';
 import Image from 'next/image';
+import {HeaderWeb} from '../headers';
+import FilterBar from '../filtersBar';
+
+import {AppContext} from '../../context/appContext';
+
+import {Games,game} from '../../Apollo/repo/game';
+
+import GameCard from '../cards/game';
+
 
 const menuOptions=[
     {url:"",title:"Home",icon:"/svg/home.svg"},
@@ -19,6 +28,13 @@ const cards=[
 const Index = () => {
 
     const [activeTypeGame, setActiveTypeGame] = useState('');
+
+    const {listGames, setListGames} = useContext(AppContext);
+
+    useEffect(() => {
+        Games.getAllGames().then(x=>setListGames(x));        
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [Games])
 
     const handleClickCard=(e:any)=>{
         setActiveTypeGame(e)
@@ -61,11 +77,12 @@ const Index = () => {
             </div>
 
             <div className="homeWebRootRightSide">
-                <div>header</div>
-                    <Image src="/gift/giftMain.gif" alt="logo" layout='intrinsic' width={1} height={1}/>
-                <div>Barra Filtros</div>
-
-                <div>Listas</div>
+                <HeaderWeb/>
+                <Image src="/gift/giftMain.gif" alt="logo" layout='intrinsic' width={1} height={1}/>
+                <FilterBar/>
+                <div className="listOfgames scrollContainer">
+                    {listGames?.map((x:game,i:number)=><GameCard key={i} game={x}/>)}
+                </div>
             </div>
         </div>
     )
