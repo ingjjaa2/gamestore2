@@ -1,0 +1,151 @@
+.gameWebRoot{
+    display: grid;
+    grid-template-rows: 70px 1fr;
+    row-gap: 15px;
+}
+
+.gameWebHeader{
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    column-gap: 20px;
+}
+
+.gameWebBody{
+    display: grid;
+    grid-template-rows: 220px 190px 210px 50px;
+    height: calc(97vh - 70px);
+}
+
+.gameImageHeader{
+    align-content: space-between;
+    background-color: red;
+    background-repeat: no-repeat;
+    background-position:0% 25%;
+    background-size:cover;
+    display: grid;
+    position: relative;
+}
+
+.gameImageVideo{
+       border-radius: 5px;
+    height: 25vh;
+    position: absolute;
+    right: 25px;
+    top: 30px;
+    width: 30vw;
+}
+
+.gameInfoContainer{
+    // background-color: red;
+    display: grid;
+    grid-template-columns: 45vw 1fr;
+    padding: 5px;
+}
+
+.gameInfoIconContainer{
+    align-items: center;
+    display: grid;
+    column-gap: 10px;
+    grid-auto-flow: column;
+    justify-content: flex-start;
+    padding: 5px 0px 5px 0px;
+}
+
+.gameInfoVersionBox{
+    align-items: center;
+    background-color: $Red;
+    border-radius: 15px;
+    column-gap: 5px;
+    color: white;
+    display: grid;
+    font-size:x-small;
+    font-weight: lighter;
+    grid-template-columns: 15px 1fr;
+    padding: 3px 9px 3px 9px;
+    width:max-content;
+}
+
+.gameInfoDetailBox{
+    color: white;
+    font-size: x-small;
+    font-weight:lighter;
+    text-align: justify;
+}
+
+.gameSummaryBox{
+    align-content:flex-start;
+    background-color: $redBackGround;
+    box-shadow: 1px 1px 10px black;
+    border-radius: 10px;
+    display: grid;
+    justify-self: center;
+    position: relative;
+    padding: 30px 15px 30px 15px;
+    top: -100px;
+    width: 240px;
+}
+
+.gameSummaryBoxYear{
+    font-size: small;
+}
+
+.gameSummaryBoxButtonsContainer{
+    column-gap: 30px;
+    display: grid;
+    grid-template-columns: 0.7fr 0.7fr;
+    margin-top: 60px;
+}
+
+.gameSummaryBoxButtonButtonsSell{
+    align-content: space-around;
+    background-color: $Red;
+    cursor: pointer;
+    display: grid;
+    border-radius: 6px;
+    height: 105px;
+    justify-items: center;
+    width: 105px;
+    &:hover{
+        box-shadow: 1px 2px 10px lightgoldenrodyellow;
+    }
+    &:active{
+        background-color: $Black2;
+    }
+
+}
+.gameSummaryBoxButtonButtonsSellText{
+    color: white;
+    font-size: small;
+}
+
+.gameSummaryBoxButtonButtonsSellPrice{
+    color:yellowgreen;
+    font-size:x-large;
+}
+
+.gameSummaryBoxButtonButtonsChange{
+    align-content: space-around;
+    background-color: $ChamgeBoxColor;
+    cursor: pointer;
+    display: grid;
+    border-radius: 6px;
+    height: 105px;
+    justify-items: center;
+    text-align: center;
+    width: 105px;
+    &:hover{
+        box-shadow: 1px 2px 10px lightgoldenrodyellow;
+    }
+    &:active{
+        background-color: $Black2;
+    }
+
+}
+
+
+.gameSummaryBoxTitle{
+    display: grid;
+    color: white;
+}
+
+

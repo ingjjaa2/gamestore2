@@ -1,0 +1,210 @@
+.adminPanelRoot{
+    background-color: $backGround;
+    color: white;
+    display: grid;
+    grid-template-rows: 35px 1fr;
+    row-gap: 10px;
+    padding: 10px;
+}
+
+.adminPanelButtons{
+    background-color: $redBackGround;
+    border-radius: 10px;
+    display: grid;
+    grid-auto-flow: column;
+    padding: 5px;
+}
+
+.adminPanelicon{
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    display: grid;
+    height: 20px;
+    justify-items: center;
+    padding: 3px;
+    width: 20px;
+    
+    &:hover{
+        background-color: $lightRed;
+    }
+    
+    &:active{
+        background-color: $yellowSnackBar;
+    }
+}
+
+.adminPanelButtonsRightIcons{
+    justify-content: flex-end;
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 10px;
+}
+
+.adminListGames{
+    display: grid;
+    height: calc(93vh - 35px);
+    padding: 5px;
+    row-gap: 10px;
+}
+
+.cardItem{
+    border: 1px solid $Black4;
+    border-radius: 5px;
+    cursor: pointer;
+    column-gap: 20px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 120px 1fr 120px;
+    height:fit-content;
+    &:hover{
+        border: 2px solid $yellowSnackBar;
+        // background-color:$Black3;
+        // box-shadow: 1px 1px 10px $yellowSnackBar;
+    }
+    // &:active{
+    //     background-color: $menuElement;
+    // }
+}
+
+.searchBarAdmin{
+    background-color: $menuElement;
+    border-radius: 5px;
+}
+
+.cardItemCenterSection{
+    align-content: center;
+    display: grid;
+    text-align: center;
+}
+
+.cardItemRightSection{
+    align-content: center;
+    display: grid;
+    justify-content: center;
+    row-gap: 20px;
+}
+
+.buttonEdit{
+    background-color: $menuElement;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    &:hover{
+        background-color: $ChamgeBoxColor;
+    }
+    &:active{
+        background-color: $yellowSnackBar;
+    }
+}
+
+.buttonDelete{
+    background-color: $redBackGround;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    &:hover{
+        background-color: $Red;
+    }
+    &:active{
+        background-color: $yellowSnackBar;
+    }
+}
+.adminLoginLogo{
+    align-content: center;
+    display: grid;
+    justify-content: center;
+
+}
+
+.adminLoginScreen{
+    align-content: center;
+    background-color: $redBackGround;
+    display: grid;
+    height: 50vh;
+    justify-content: center;
+    margin-top: 25vh;
+    margin-left: 25vw;
+    row-gap: 30px;
+    width: 50vw;
+}
+
+.adminLoginInput{
+    background-color: $menuElement;
+    border-radius: 5px;
+    padding: 7px;
+    width: 40vw;
+}
+
+.adminLoginButton{
+    background-color: $ChamgeBoxColor;
+    border-radius: 10px;
+    cursor: pointer;
+    justify-self: center;
+    padding: 5px;
+    text-align: center;
+    width: 25vw;
+
+    &:hover{
+        background-color: whitesmoke;
+    }
+
+    &:active{
+        background-color: $Black4;
+        color: $menuElement;
+    }
+}
+
+.adminModalExternalContainer{
+    background-color: black;
+    position: absolute;
+    height: 100vh;
+    opacity: 0.6;
+    top: 0;
+    width: 100vw;
+    z-index: 2;
+}
+
+.adminModalRoot{
+    background-color: $redBackGround;
+    display: grid;
+    grid-template-rows: 1fr 50px;
+    position: absolute;
+    top: 10vh;
+    left: 10vw;
+    height: 80vh;
+    width: 80vw;
+    z-index: 3;
+}
+
+.adminModalInfo{
+    width: 100%;
+}
+
+.adminModalButtons{
+    border-top: 2px double white;
+    display: grid;
+    justify-items: center;
+    padding: 5px;
+}
+
+.adminModalSaveButton{
+    align-self: center;
+    background-color: $menuElement;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    padding: 3px;
+    width: 120px;
+    
+    &:hover{
+        background-color: $ChamgeBoxColor;
+        color: white;
+    }
+
+    &:active{
+        background-color: $yellowSnackBar;
+    }
+}
+
+

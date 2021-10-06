@@ -1,0 +1,138 @@
+.slidersRoot{
+    background-color: $redBackGround;
+    // column-gap: 15px;
+    // display: grid;
+    // grid-auto-flow: column;
+    // padding: 10px 15px 10px 15px;
+    position: relative;
+    overflow: hidden;
+    // overflow-x: scroll;
+}
+
+.slidersHorizontalList{
+    // background-color: $redBackGround;
+    column-gap: 15px;
+    display: grid;
+    grid-auto-flow: column;
+    padding: 10px 15px 10px 15px;
+    // position: relative;
+    overflow: hidden;
+    // overflow-x: scroll;
+}
+
+.slideVideo{
+    background-color: black;
+    height: 190px;
+    width: 360px;
+}
+
+.slidersImage{
+    background-color: black;
+    cursor:zoom-in;
+    height: 190px;
+    width: 360px;
+
+    &:hover{
+        zoom: 1.1;
+        border: 2px solid white;
+    }
+}
+
+.sliderRowContainerLeft{
+    align-items: center;
+    background-color: black;
+    cursor: pointer;
+    display: grid;
+    justify-items: center;
+    position:absolute;
+    opacity: 0.7;
+    top: 40%;
+    height: 70px;
+    width: 70px;
+    z-index: 2;
+
+    &:hover{
+        background-color: $menuElement;
+        opacity: 0.9;
+    }
+
+    &:active{
+        background-color: lightgray;
+        opacity: 1;
+    }
+}
+
+.sliderRowContainerRight{
+    align-items: center;
+    background-color: black;
+    cursor: pointer;
+    display: grid;
+    justify-items: center;
+    position:absolute;
+    opacity: 0.7;
+    top: 40%;
+    right: 0;
+    height: 70px;
+    width: 70px;
+    z-index: 2;
+
+    &:hover{
+        background-color: $menuElement;
+        opacity: 0.9;
+    }
+
+    &:active{
+        background-color: lightgray;
+        opacity: 1;
+    }
+}
+
+.slideImageModalOutsideBox{
+    background-color: black;
+    height: 100vh;
+    opacity: 0.5;
+    position: absolute;
+    width: 100vw;
+    z-index: 3;
+}
+
+.slideImageModalBox{
+    align-self:center;
+    align-items: center;
+    background-color: $menuElement;
+    border: 10px solid white;
+    border-radius: 20px;
+    display: grid;
+    height: 75vh;
+    justify-self: center;
+    justify-content: center;
+    position: absolute;
+    width: 75vw;
+    z-index: 4;
+}
+
+.slideImageModalBoxCloseButton{
+    align-items: center;
+    background-color: $redBackGround;
+    border-radius: 20px;
+    cursor: pointer;
+    display: grid;
+    height: 25px;
+    justify-items: center;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 25px;
+    z-index: 6;
+
+    &:hover{
+        background-color: $ChamgeBoxColor;
+    }
+    
+    &:active{
+        background-color: $Black4;
+        box-shadow: 1px 1px 2px white;
+    }
+
+
+}

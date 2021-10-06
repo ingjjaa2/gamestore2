@@ -1,0 +1,91 @@
+import {Schema, model,models} from 'mongoose';
+
+const GameSchema = new Schema({
+    name:{
+        type:String,
+        require:true
+    },
+    detail:{
+        type:String,
+        require:false
+    },
+    cardUrl:{
+        type:String,
+        require:false
+    },
+    banneUrl:{
+        type:String,
+        require:false
+    },
+    igdbID:{
+        type:Number,
+        require:false
+    },
+    isOnCd:{
+        type:Boolean,
+        require:false,
+        default:false,
+    },
+    isOnDigital:{
+        type:Boolean,
+        require:false,
+        default:false,
+    },
+    gameIsNew:{
+        type:Boolean,
+        require:false,
+        default:false,
+    },
+    ano:{
+        type:Number,
+        require:false
+    },
+    platform:{
+        type:String,
+        require:false
+    },
+    precioVenta:{
+        type:Number,
+        require:false
+    },
+    ratingA:{
+        type:Number,
+        require:false
+    },
+    ratingAcount:{
+        type:Number,
+        require:false
+    },
+    ratingB:{
+        type:Number,
+        require:false
+    },
+    ratingBcount:{
+        type:Number,
+        require:false
+    },
+    start:{
+        type:Number,
+        require:false
+    },
+    url:{
+        type:String,
+        require:false
+    },
+    screenshots:{
+        type:[String],
+        require:false
+    },
+    videos:{
+        type:[String],
+        require:false
+    },
+    images:{
+        type:[String],
+        require:false
+    }
+
+
+});
+
+export default models.Game || model('Game',GameSchema);

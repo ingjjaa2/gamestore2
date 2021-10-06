@@ -8,6 +8,7 @@ html, body{
     background-color:$backGround;
     padding: 0;
     margin: 0;
+    overflow: hidden;
     // padding-bottom: 20px;
 }
 
@@ -96,4 +97,12 @@ main {
 
 .test{
     background-color: red;
+}
+
+.loadingComponent{
+    background-color: red;
+    background-image: url('/gift/loading.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }

@@ -1,10 +1,11 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import {game} from '../../Apollo/repo/game';
 import Image from 'next/image';
 
 const Game = ({game}:{game:game}) => {
 
-    console.log(game);
+    const router = useRouter();
 
     const HandlePlatformIcon=({platform}:{platform:string})=>{
         switch (platform) {
@@ -34,9 +35,13 @@ const Game = ({game}:{game:game}) => {
         }
     }
 
+    const handleClickCard=()=>{
+        router.push(`/game/${game.id}`)
+    }
+
     return (
-        <div className="cardGameContainer">
-            <div className="cardgameImage" style={{backgroundImage:`url(${game.imageUrl})`}}>
+        <div className="cardGameContainer" onClick={handleClickCard}>
+            <div className="cardgameImage" style={{backgroundImage:`url(${game.cardUrl})`}}>
                 {/* header */}
                 <div className="cardGameHeader">
                     <div className="cardGameHeaderStartBox">

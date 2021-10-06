@@ -32,7 +32,8 @@ const Index = () => {
     const {listGames, setListGames} = useContext(AppContext);
 
     useEffect(() => {
-        Games.getAllGames().then(x=>setListGames(x));        
+        Games.getAllGames().then(x=>{
+            setListGames(x)});        
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [Games])
 

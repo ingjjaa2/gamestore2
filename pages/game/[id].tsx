@@ -1,5 +1,7 @@
-import React from 'react'
-
+import React,{useEffect,useState} from 'react';
+import {useWindowSizeChange} from '../../hooks/useWindowSizeChange';
+import GameWebView from '../../components/gameWeb';
+import GameMobileView from '../../components/gameMobile';
 
 export async function getStaticPaths(){
 
@@ -27,12 +29,24 @@ export async function getStaticProps(context:any){
 
 const Index = (props:any) => {
 
-    console.log(props);
+    const [gameID, setGameID] = useState('0');
+
+    const {width}= useWindowSizeChange();
+
+    
+    useEffect(() => {
+        const {id} = props;
+        setGameID(id);
+    }, [props])
 
     return (
-        <div>
-            Esta en Game
-        </div>
+        <>
+        {width<600?(
+            <GameMobileView/>
+        ):(
+            <GameWebView gameId={gameID}/>
+        )}
+        </>
     )
 }
 

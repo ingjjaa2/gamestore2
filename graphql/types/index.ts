@@ -3,6 +3,7 @@ import { gql } from "apollo-server-micro";
 import {Usuario,UsuarioInput,UsuarioAuthInput} from './usuario';
 import {InputGetById,InputGetByUserId} from './generals';
 import {File,FileInput} from './file'
+import {Game,InputGame} from './game'
 
 
 const Query = `
@@ -14,6 +15,8 @@ const Query = `
     getListUsers:[Usuario],
     getFileById(input:InputGetById):File,
     getFileListByUser(input:InputGetByUserId):[File],    
+    getGameById(input:InputGetById):Game,
+    getAllGame:[Game]    
   }
 `;
 
@@ -23,14 +26,12 @@ type Mutation {
   deleteuser(input:InputGetById):Boolean,  
   createFile(input:FileInput):File,
   deleteFile(input:InputGetById):Boolean,
+  createGame(input:InputGame):Game,
+  deleteGame(input:InputGetById):Boolean,
 }`;
 
-const Subscription=`
-type Subscription{
-  getMessages(input:InputGetByUserId):[Message],
-}`;
 
-const typeDefs = [Query,Mutation,Subscription,Usuario,UsuarioInput,UsuarioAuthInput,InputGetById,
-                 InputGetByUserId,File,FileInput];
+const typeDefs = [Query,Mutation,Usuario,UsuarioInput,UsuarioAuthInput,InputGetById,
+                 InputGetByUserId,File,FileInput,Game,InputGame];
 
 export default typeDefs;
