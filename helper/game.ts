@@ -1,6 +1,6 @@
 const ApiBaseURL = 'http://localhost:3000/api/igdb';
 
-export const getGameDataById =(gameID:number)=>{
+export const getGameDataById =(gameID:any)=>{
 
     return new Promise<any>((res,rej)=>{
         
@@ -13,8 +13,7 @@ export const getGameDataById =(gameID:number)=>{
             body:JSON.stringify(data)
         }).then(async(rawResponse)=>{
             const response = await rawResponse.json();
-            console.log(response);
-            res(true);
+            res(response.data);
         }).catch((error)=>{
             console.log(error);
             rej(false);

@@ -43,6 +43,10 @@
     color: white;
     outline: transparent;
     width: 100%;
+
+    &::placeholder{
+        color:whitesmoke;
+    }
 }
 
 .headersIcons{
@@ -82,4 +86,46 @@
     font-size: medium;
     color: white;
     border-bottom: 1px solid $Red;
+}
+
+.headersMobileRoot{
+    align-items: center;
+    display: grid;
+    grid-template-columns: 30px 1fr 30px;
+}
+
+.headersMobileCenter{
+    
+    display: grid;
+    justify-items: center;
+}
+
+.headersMobileCenterSearchbar{
+    background-color: $Red;
+    border-radius: 5px;
+    padding: 5px;
+    width: 90%;
+}
+
+.headerMobileDrawerExternal{
+    background-color: black;
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    opacity: 0.4;
+    width: 100vw;
+    z-index: 9;
+}
+
+.headerMobileDrawer{
+    background-color: $redBackGround;
+    box-shadow: 4px 1px 15px $Red;
+    position: absolute;
+    display: grid;
+    height: 100vh;
+    top: 0;
+    width: 70vw;
+    overflow: scroll;
+    row-gap: 10px;
+    z-index: 10;
 }

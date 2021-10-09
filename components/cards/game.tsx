@@ -36,7 +36,9 @@ const Game = ({game}:{game:game}) => {
     }
 
     const handleClickCard=()=>{
-        router.push(`/game/${game.id}`)
+        if(game?.id){
+            router.push(`/game/${game.id}`)
+        }
     }
 
     return (
@@ -54,7 +56,7 @@ const Game = ({game}:{game:game}) => {
                 <div className="cardGameFotter">
                     <div className="cardGameFotterLeft">
                         {game.isOnCd&&(<Image src="/svg/cd.svg" layout="fixed" width={18} height={18} alt="cdIcon"  className="iconActive" />)}
-                        {game.isOnDigital&&(<Image src="/svg/disk.svg" layout="fixed" width={18} height={18} alt="cdIcon"  className="iconActive" />)}
+                        {!game.isOnCd&&(<Image src="/svg/disk.svg" layout="fixed" width={18} height={18} alt="cdIcon"  className="iconActive" />)}
                     </div>
                     <div className="cardGameFotterRight">
                         <HandlePlatformIcon platform={game.platform}/>

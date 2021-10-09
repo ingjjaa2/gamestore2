@@ -10,12 +10,15 @@ export const createGame={
                     const {input} =  args;
                     const _element = {...input};
                     let newGame = null;
-                    if(_element.hasOwnProperty('_id')){
+                    if(_element.hasOwnProperty('_id')&&_element?._id!=="undefined"){
                         const _updateInputs ={...input};
                         delete _updateInputs._id;
+                        console.log({_updateInputs})
                         newGame = await Game.findByIdAndUpdate(input._id,_updateInputs,{new:true});
                     }else{
-                        newGame = new Game(input);
+                        const _createInputs ={...input};
+                        delete _createInputs._id;
+                        newGame = new Game(_createInputs);
                         await newGame.save();
                     }
                     return newGame;
@@ -53,14 +56,9 @@ export const getGameById ={
     Query:{
         async getGameById(parent: any, args: any, context: any){
             const {authState} = context;
-            // if(authState.ok){
                 const {_id} = args.input;
                 const gameList = await Game.find({_id});
                 return gameList[0]
-        //    }else{
-        //        console.log("usuario no valido");
-        //        return null;
-        //    }
         }
     }
 }
@@ -69,13 +67,8 @@ export const getAllGame={
     Query:{
         async getAllGame(parent: any, args: any, context: any){
             const {authState} = context;
-            // if(authState.ok){
-                const gameList = await Game.find({});
-                return gameList
-        //    }else{
-        //        console.log("usuario no valido");
-        //        return null;
-        //    }
+            const gameList = await Game.find({});
+            return gameList
         }
     }
 }

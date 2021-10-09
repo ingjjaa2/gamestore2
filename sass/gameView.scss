@@ -18,7 +18,6 @@
 
 .gameImageHeader{
     align-content: space-between;
-    background-color: red;
     background-repeat: no-repeat;
     background-position:0% 25%;
     background-size:cover;
@@ -148,4 +147,84 @@
     color: white;
 }
 
+.gameMobileRoot{
+    display: grid;
+    grid-template-rows: 35px 1fr;
+    row-gap: 5px;
+}
 
+.gameBodyMobile{
+    overflow: scroll;
+    height: calc(100vh - 35px);
+
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar-thumb{
+        background-color: $Black3;
+        border-radius: 0px;
+    }
+    &::-webkit-scrollbar{
+        background-color: transparent;
+        width: 0px;
+    }
+}
+
+.gameImageHeaderMobile{
+    align-content: space-between;
+    background-repeat: no-repeat;
+    background-position:0% 25%;
+    background-size:cover;
+    display: grid;
+    position: relative;
+    height: 150px;
+}
+
+.gameInfoContainerMobile{
+    // background-color: red;
+    display: grid;
+    justify-content: center;
+    padding: 5px;
+}
+
+.gameSummaryBoxMobile{
+    align-content:flex-start;
+    background-color: $redBackGround;
+    box-shadow: 1px 1px 10px black;
+    border-radius: 10px;
+    display: grid;
+    justify-self: center;
+    position: relative;
+    padding: 30px 15px 30px 15px;
+    top: -40px;
+    width: 240px;
+}
+
+.gameInfoIconContainerMobile{
+    // background-color: red;
+    align-items: center;
+    display: grid;
+    column-gap: 10px;
+    grid-auto-flow: column;
+    justify-content: space-around;
+    // padding: 5px 0px 5px 0px;
+}
+
+.gameImageVideoMobile{
+    border-radius: 5px;
+    height: 25vh;
+    justify-self: center;
+    margin-top: 30px;
+    width: 70vw;
+}
+
+.gameInfoDetailBoxMobile{
+    // background-color: red;
+    color: white;
+    font-size: small;
+    font-weight:lighter;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 0px 15px 0px 15px;
+    text-align: justify;
+    // width: 70vw;
+}

@@ -5,7 +5,7 @@ import FilterBar from '../filtersBar';
 
 import {AppContext} from '../../context/appContext';
 
-import {Games,game} from '../../Apollo/repo/game';
+import {game} from '../../Apollo/repo/game';
 
 import GameCard from '../cards/game';
 
@@ -17,28 +17,23 @@ const menuOptions=[
 ];
 
 const cards=[
-    {id:'sport',title:"Deporte",icon:"/images/Optimized-Sport.png"},
-    {id:'racing',title:"Carrera",icon:"/images/Optimized-racing.png"},
-    {id:'action',title:"Accion / Aventura",icon:"/images/adventure.png"},
-    {id:'child',title:"Niños",icon:"/images/Optimized-childs.png"},
-    {id:'rgp',title:"RGP",icon:"/images/Optimized-rgp.png"},
-    {id:'shoots',title:"Disparo",icon:"/images/Optimized-shoots.png"},
+    {id:'Deportes',title:"Deporte",icon:"/images/Optimized-Sport.png"},
+    {id:'Carrera',title:"Carrera",icon:"/images/Optimized-racing.png"},
+    {id:'Accion',title:"Accion / Aventura",icon:"/images/adventure.png"},
+    {id:'Niños',title:"Niños",icon:"/images/Optimized-childs.png"},
+    {id:'RGP',title:"RGP",icon:"/images/Optimized-rgp.png"},
+    {id:'Disparos',title:"Disparo",icon:"/images/Optimized-shoots.png"},
 ]
 
 const Index = () => {
 
     const [activeTypeGame, setActiveTypeGame] = useState('');
 
-    const {listGames, setListGames} = useContext(AppContext);
+    const {filteredListGames, handleChangeFileters,filters} = useContext(AppContext);
 
-    useEffect(() => {
-        Games.getAllGames().then(x=>{
-            setListGames(x)});        
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [Games])
 
     const handleClickCard=(e:any)=>{
-        setActiveTypeGame(e)
+        handleChangeFileters({tag:"typeOfGame",value:filters.typeOfGame===e?"":e})
     }
 
 
@@ -64,7 +59,7 @@ const Index = () => {
                 <div className="homeWebCardsContainer">
                     {cards.map((x:any,i:number)=>{
                         return(
-                            <div key={i} className={activeTypeGame===x.id?'homeCardActive':'homeCard'} 
+                            <div key={i} className={filters.typeOfGame===x.id?'homeCardActive':'homeCard'} 
                                 style={{backgroundImage:`url(${x.icon})`}} onClick={()=>handleClickCard(x.id)}>
                                 {x.title}
                             </div>
@@ -82,7 +77,7 @@ const Index = () => {
                 <Image src="/gift/giftMain.gif" alt="logo" layout='intrinsic' width={1} height={1}/>
                 <FilterBar/>
                 <div className="listOfgames scrollContainer">
-                    {listGames?.map((x:game,i:number)=><GameCard key={i} game={x}/>)}
+                    {filteredListGames?.map((x:game,i:number)=><GameCard key={i} game={x}/>)}
                 </div>
             </div>
         </div>

@@ -21,7 +21,8 @@
     border-radius: 10px;
     display: grid;    
     height: 90px;
-    width: 190px;
+    justify-content: center;
+    // width: 190px;
 }
 
 .homeWebMenu{
@@ -112,7 +113,8 @@
 .homeWebFooterImage{
     background-color: $redBackGround;
     border-radius: 10px;
-    display: grid;    
+    display: grid;  
+    justify-content: center;  
     padding: 10px;
 }
 
@@ -131,3 +133,19 @@
     height: calc(90vh - 35px - 150px - 30px);
 }
 
+
+.homeMobileRoot{
+    display: grid;
+    grid-template-rows: 35px 90px 30px 1fr;
+    row-gap: 10px;
+}
+
+.listOfgamesMobile{
+    column-gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 15px;
+    row-gap: 8px;
+    height: calc(90vh - 160px );
+}

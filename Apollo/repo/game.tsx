@@ -1,8 +1,8 @@
 import {Repository} from './repository';
-import {gettAllGamesPlain,getOneGameById} from '../querry/game';
+import {gettAllGamesPlain,getOneGameById,createGame,deleteGame} from '../querry/game';
 
 export interface game{
-    id:string,
+    id?:string,
     name:string,
     detail:string,
     cardUrl:string,
@@ -10,10 +10,11 @@ export interface game{
     igdbID:number,
     isOnCd:Boolean,
     isOnDigital:Boolean,
-    isNew:Boolean,
+    gameIsNew:Boolean,
     ano:string,
     platform:string,
-    precioVenta:string,
+    typeGame:string,
+    precioVenta:number,
     start:number,
     images:string[],
     ratingA:number,
@@ -32,28 +33,62 @@ class GameRepository extends Repository{
         const _gamesList:game[]=[];
 
         const rawRepo = await this.getAll("",gettAllGamesPlain);
+
+        rawRepo?.getAllGame?.forEach((x:any) => _gamesList.push({
+            id:x._id,
+            name:x?.name||"",
+            detail:x?.detail||"",
+            cardUrl:x?.cardUrl||"",
+            banneUrl:x?.banneUrl||"",
+            igdbID:x?.igdbID||0,
+            isOnCd:x?.isOnCd||false,
+            isOnDigital:x?.isOnDigital||false,
+            gameIsNew:x?.gameIsNew||false,
+            ano:x?.ano||"",
+            platform:x?.platform||"ps4",
+            typeGame:x?.typeGame||"",
+            precioVenta:x?.precioVenta||0,
+            start:x?.start||0,
+            images:x?.images||[],
+            ratingA:(x.ratingA!==undefined?x.ratingA:0),
+            ratingAcount:(x.ratingAcount!==undefined?x.ratingAcount:0),
+            ratingB:(x.ratingB!==undefined?x.ratingB:0),
+            ratingBcount:(x.ratingBcount!==undefined?x.ratingBcount:0),
+            screenshots:x.screenshots||[],
+            url:x?.url||"",
+            videos:x?.videos||[]             
+        }));
+        return _gamesList;
+    }
+
+    async getAllGamesByName():Promise<game[]>{
+        const _gamesList:game[]=[];
+
+        const rawRepo = await this.getAll("",gettAllGamesPlain);
+
         rawRepo?.forEach((x:any) => _gamesList.push({
             id:x._id,
-            name:x.name,
-            detail:x.detail,
-            cardUrl:x.cardUrl,
-            banneUrl:x.banneUrl,
-            igdbID:x.igdbID,
-            isOnCd:x.isOnCd,
-            isOnDigital:x.isOnDigital,
-            isNew:x.isNew,
-            ano:x.ano,
-            platform:x.platform,
-            precioVenta:x.precioVenta,
-            start:x.start,
-            images:x.images,
-            ratingA:x.ratingA,
-            ratingAcount:x.ratingAcount,
-            ratingB:x.ratingB,
-            ratingBcount:x.ratingBcount,
-            screenshots:x.screenshots,
-            url:x.url,
-            videos:x.videos            
+            name:x?.name||"",
+            detail:x?.detail||"",
+            cardUrl:x?.cardUrl||"",
+            banneUrl:x?.banneUrl||"",
+            igdbID:x?.igdbID||0,
+            isOnCd:x?.isOnCd||false,
+            isOnDigital:x?.isOnDigital||false,
+            gameIsNew:x?.gameIsNew||false,
+            ano:x?.ano||"",
+            platform:x?.platform||"ps4",
+            typeGame:x?.typeGame||"",
+            precioVenta:x?.precioVenta||0,
+            start:x?.start||0,
+            images:x?.images||[],
+            ratingA:(x.ratingA!==undefined?x.ratingA:0),
+            ratingAcount:(x.ratingAcount!==undefined?x.ratingAcount:0),
+            ratingB:(x.ratingB!==undefined?x.ratingB:0),
+            ratingBcount:(x.ratingBcount!==undefined?x.ratingBcount:0),
+            screenshots:x.screenshots||[],
+            url:x?.url||"",
+            videos:x?.videos||[]             
         }));
         return _gamesList;
     }
@@ -65,28 +100,30 @@ class GameRepository extends Repository{
         const x = rawRepo.getGameById;
 
         if(x){
+
             const _game = {
                 id:x._id,
-                name:x.name,
-                detail:x.detail,
-                cardUrl:x.cardUrl,
-                banneUrl:x.banneUrl,
-                igdbID:x.igdbID,
-                isOnCd:x.isOnCd,
-                isOnDigital:x.isOnDigital,
-                isNew:x.isNew,
-                ano:x.ano,
-                platform:x.platform,
-                precioVenta:x.precioVenta,
-                start:x.start,
-                images:x.images,
-                ratingA:x.ratingA,
-                ratingAcount:x.ratingAcount,
-                ratingB:x.ratingB,
-                ratingBcount:x.ratingBcount,
-                screenshots:x.screenshots,
-                url:x.url,
-                videos:x.videos            
+                name:x?.name||"",
+                detail:x?.detail.replace(/(\r\n|\n|\r)/gm, "")||"",
+                cardUrl:x?.cardUrl||"",
+                banneUrl:x?.banneUrl||"",
+                igdbID:x?.igdbID||0,
+                isOnCd:x?.isOnCd||false,
+                isOnDigital:x?.isOnDigital||false,
+                gameIsNew:x?.gameIsNew||false,
+                ano:x?.ano||"",
+                platform:x?.platform||"ps4",
+                typeGame:x?.typeGame||"",
+                precioVenta:x?.precioVenta||0,
+                start:x?.start||0,
+                images:x?.images||[],
+                ratingA:x.ratingA||0,
+                ratingAcount:x.ratingAcount||0,
+                ratingB:x.ratingB||0,
+                ratingBcount:x.ratingBcount||0,
+                screenshots:x.screenshots||[],
+                url:x?.url||"",
+                videos:x?.videos||[]            
             }
     
             return _game;
@@ -94,6 +131,25 @@ class GameRepository extends Repository{
 
 
     }
+
+    async createOneGame(game:game,token:string){
+
+        const rawRepo = await this.createOne(token,createGame(game));
+
+        if(rawRepo){
+            return true
+        }
+    }
+
+    async deleteOneGame(idString:string,token:string){
+
+        const rawRepo = await this.deleteOne(token,deleteGame(idString));
+  
+        if(rawRepo){
+            return true
+        }
+    }
+    
 
 };
 

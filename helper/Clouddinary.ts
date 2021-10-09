@@ -17,7 +17,6 @@ export const uploadFile = (file:File,fileName:string='default')=>{
             body:data
         }).then(async(response)=>{
             const json = await response.json();
-            // console.log(json);
             res(json)
         }).catch((error)=>{
             console.log({error});
@@ -43,7 +42,6 @@ export const deleteFile = (fileName:string='default')=>{
             body:data
         }).then(async(response)=>{
             const json = await response.json();
-            // console.log(json);
             res(json)
         }).catch((error)=>{
             console.log({error});

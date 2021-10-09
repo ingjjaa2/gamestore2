@@ -17,26 +17,12 @@ const _login=async()=>{
     return true;
 }
 
-const _getGame=async(gameID:number)=>{
+
+const _getGameExtraInfo=async(gameID:any)=>{
 
     const _screenShoots:any[]=[];
     const _videos:any[]=[];
     const _images:any[]=[];
-
-    const gameRawResponse = await fetch('https://api.igdb.com/v4/games',
-    {
-        method:'POST',
-        headers:{
-            Accept: 'application/json',
-            "Client-ID": clientId,
-            Authorization: `Bearer ${accessToken}`,
-        },
-        body:`fields *; where id = ${gameID};`
-    });
-
-    const gameList = await gameRawResponse.json();
-
-    const game = gameList[0];
 
     const imagesRawResponse = await fetch('https://api.igdb.com/v4/artworks',
     {
@@ -95,6 +81,73 @@ const _getGame=async(gameID:number)=>{
         _videos.push(_url);        
     }
 
+    return {_screenShoots,_videos,_images}
+}
+
+const _getGamesByName=async(gameID:any)=>{
+
+    let gameListWithData=[];
+
+    const gameRawResponse = await fetch('https://api.igdb.com/v4/games',
+    {
+        method:'POST',
+        headers:{
+            Accept: 'application/json',
+            "Client-ID": clientId,
+            Authorization: `Bearer ${accessToken}`,
+        },
+        body:`search "${gameID}"; fields *;`
+    }); 
+
+    const gameList = await gameRawResponse?.json();
+
+    for (let index = 0; index < gameList.length; index++) {
+        const game = gameList[index];
+        const {_screenShoots,_videos,_images} = await _getGameExtraInfo(game.id);
+        const response ={
+            id:game?.id,
+            name:game?.name||"",
+            ratingA:game?.aggregated_rating||0,
+            ratingAcount:game?.aggregated_rating_count||0,
+            ratingB:game?.total_rating||0,
+            ratingBcount:game?.total_rating_count||0,
+            storyline:game?.storyline||"",
+            summary:game?.summary||"",
+            url:game?.url||"",
+            screenshots:_screenShoots||[],
+            videos:_videos||[],
+            images:_images||[],
+            realeaseTime:game?.first_release_date||0
+        }
+        gameListWithData.push(response);
+    }
+
+    return gameListWithData;
+
+}
+
+const _getGame=async(gameID:any)=>{
+
+
+    const gameRawResponse = await fetch('https://api.igdb.com/v4/games',
+    {
+        method:'POST',
+        headers:{
+            Accept: 'application/json',
+            "Client-ID": clientId,
+            Authorization: `Bearer ${accessToken}`,
+        },
+        body:`fields *; where id = ${gameID};`
+    });
+
+
+    const gameList = await gameRawResponse?.json();
+
+    const game = gameList[0];
+
+    const {_screenShoots,_videos,_images} = await _getGameExtraInfo(game.id);
+
+
     const response ={
         id:game?.id,
         name:game?.name,
@@ -107,7 +160,8 @@ const _getGame=async(gameID:number)=>{
         url:game?.url,
         screenshots:_screenShoots,
         videos:_videos,
-        images:_images
+        images:_images,
+        realeaseTime:game?.first_release_date
     }
 
     return response;
@@ -129,33 +183,13 @@ export default async function handler(
             await _login();
         }
 
-        // const rawResponse = await fetch('https://api.igdb.com/v4/games',
-        // {
-        //     method:'POST',
-        //     headers:{
-        //         Accept: 'application/json',
-        //         "Client-ID": clientId,
-        //         Authorization: `Bearer ${accessToken}`,
-        //     },
-        //     body:`fields *; where id = ${gameID};`
-        // });
+        let gameInfo;
 
-        // const imagesRawResponse = await fetch('https://api.igdb.com/v4/artworks',
-        // {
-        //     method:'POST',
-        //     headers:{
-        //         Accept: 'application/json',
-        //         "Client-ID": clientId,
-        //         Authorization: `Bearer ${accessToken}`,
-        //     },
-        //     body:`fields *; where game = ${gameID};`
-        // });
-
-
-        // const response = await rawResponse.json();
-        // const responseImages = await imagesRawResponse.json();
-
-        const gameInfo = await _getGame(gameID);
+        if(typeof gameID ==="number"){
+            gameInfo = await _getGame(gameID);
+        }else{
+            gameInfo = await _getGamesByName(gameID);
+        }
 
         res.status(200).json({ok:true,data:gameInfo}) 
     }else{

@@ -42,7 +42,7 @@ const Index = (props:any) => {
     return (
         <>
         {width<600?(
-            <GameMobileView/>
+            <GameMobileView gameId={gameID}/>
         ):(
             <GameWebView gameId={gameID}/>
         )}

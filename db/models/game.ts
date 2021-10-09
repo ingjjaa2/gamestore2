@@ -44,6 +44,10 @@ const GameSchema = new Schema({
         type:String,
         require:false
     },
+    typeGame:{
+        type:String,
+        require:false
+    },
     precioVenta:{
         type:Number,
         require:false
