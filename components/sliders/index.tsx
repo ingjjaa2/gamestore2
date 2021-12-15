@@ -9,11 +9,14 @@ export interface sliderData{
 }
 
 
+
 const Index = ({data}:{data:sliderData[]}) => {
 
     const [state, setstate] = useState<any|undefined>();
 
     const {width,height}=useWindowSizeChange();
+
+    
 
     const handleClickImage=(e:any)=>{
         setstate(e);
@@ -43,7 +46,8 @@ const Index = ({data}:{data:sliderData[]}) => {
                 }else{
                     return(
                         <div key={i} className="slidersImage loadingComponent" onClick={()=>handleClickImage(x.url)}>
-                            <Image src={x.url} alt="image" layout="fixed" width={360} height={190}  />
+                            <Image src={x.url} alt="image" layout="fixed" width={360} height={190} />
+                            {/* <img src={x.url} alt="image" width={360} height={190} /> */}
                         </div>
                     )
                 }
@@ -61,6 +65,7 @@ const Index = ({data}:{data:sliderData[]}) => {
                         <Image src="/svg/close.svg" alt="image" layout="fixed" width={22} height={22}  />
                     </span>
                     <Image src={state} alt="image" layout="fixed" width={width*0.75} height={height*0.75}  />
+                    {/* <img src={state} alt="image" width={width*0.75} height={height*0.75}  /> */}
             </div>
             </>
         )}
