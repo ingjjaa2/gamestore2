@@ -13,6 +13,9 @@ export class Repository{
 
     getAll(token:string,queryBody:any):Promise<any>{
         return new Promise((res,rej)=>{
+
+            console.log("en el repo principal");
+
             if(this?.repoName==="gamesList"){
                 fetch('http://localhost:3000/api/graphql',{
                     method:'POST',

@@ -34,6 +34,8 @@ class GameRepository extends Repository{
 
         const rawRepo = await this.getAll("",gettAllGamesPlain);
 
+        console.log(rawRepo);
+
         rawRepo?.getAllGame?.forEach((x:any) => _gamesList.push({
             id:x._id,
             name:x?.name||"",

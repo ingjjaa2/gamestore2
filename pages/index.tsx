@@ -15,6 +15,7 @@ const Index =(props:any)=>{
 
   useEffect(() => {
     Games.getAllGames().then(x=>{
+        console.log(x);
         setListGames(x)});        
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [Games])

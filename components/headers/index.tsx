@@ -3,7 +3,7 @@ import Image from 'next/image';
 import {AppContext} from '../../context/appContext';
 
 const headerOptions=[
-    {id:"games",title:"Juegos"},
+    {id:"games",title:"Juegos22"},
     {id:"subscriptions",title:"Subscripciones"},
     {id:"services",title:"Servicios"}
 ];
