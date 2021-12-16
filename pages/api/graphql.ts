@@ -21,7 +21,8 @@ const startServer = apolloServer.start();
 
 export default async function handler(req:any, res:any) {
   await startServer;
-  await dbConnect();
+  console.log("esta antes de conectar a la DB")
+  // await dbConnect();
   await apolloServer.createHandler({
     path: '/api/graphql',
   })(req, res);
