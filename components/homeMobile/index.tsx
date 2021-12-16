@@ -4,7 +4,7 @@ import {HeaderMobile} from '../headers';
 import FilterBar from '../filtersBar';
 import GameCard from '../cards/game';
 import {AppContext} from '../../context/appContext';
-import {game} from '../../Apollo/repo/game';
+import {game} from '../../interface/game';
 
 const Index = () => {
 

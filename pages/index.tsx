@@ -5,7 +5,26 @@ import HomeWeb from '../components/homeWeb';
 import HomeMobile from '../components/homeMobile';
 
 import {AppContext} from '../context/appContext';
-import {Games,} from '../Apollo/repo/game';
+import {gameHandler} from '../helper/igdb';
+import dbConnect from '../db/mongo';
+
+
+export async function getServerSideProps() {
+  const  client  = await dbConnect();
+
+  const isConnected = client.connection.readyState;
+  let _listofgame:any = [];
+
+
+  if(isConnected===1){
+    _listofgame = await gameHandler();
+  }
+
+  return {
+    props: { listofgame : JSON.stringify(_listofgame?.data) },
+  }
+}
+
 
 const Index =(props:any)=>{
 
@@ -14,11 +33,10 @@ const Index =(props:any)=>{
   const {setListGames} = useContext(AppContext);
 
   useEffect(() => {
-    Games.getAllGames().then(x=>{
-        console.log(x);
-        setListGames(x)});        
-// eslint-disable-next-line react-hooks/exhaustive-deps
-}, [Games])
+    const {listofgame} = props;
+    setListGames(JSON.parse(listofgame));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <>

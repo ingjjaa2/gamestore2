@@ -1,6 +1,6 @@
 import {createContext,useState,useEffect} from 'react';
 import {useRouter} from 'next/router';
-import {game} from '../Apollo/repo/game';
+import {game} from '../interface/game'
 
 export const AppContext = createContext({} as ReturnType<typeof useContextValue>);
 

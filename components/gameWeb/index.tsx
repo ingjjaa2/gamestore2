@@ -1,8 +1,8 @@
 import React,{useEffect,useState} from 'react';
 import Image from 'next/image';
 import {HeaderWeb} from '../headers';
-import {game,Games} from '../../Apollo/repo/game';
-// import {getGameDataById} from '../../helper/game';
+import {game} from '../../interface/game';
+import {fetchSinToken} from '../../helper/fetches';
 import Slider,{sliderData} from '../sliders';
 
 const Index = ({gameId}:{gameId:string}) => {
@@ -13,7 +13,7 @@ const Index = ({gameId}:{gameId:string}) => {
 
 
     useEffect(() => {
-        Games.getOneGame(gameId).then(x=>{
+        fetchSinToken({action:'getGameById',data:gameId}).then((x:any)=>{
             if(x){
                 const _multimediaList:sliderData[]=[];
                 setActiveGame(x);
@@ -34,7 +34,6 @@ const Index = ({gameId}:{gameId:string}) => {
                 }));
                 setMultimediaList(_multimediaList);
             }
-            // getGameDataById(x?.igdbID||0);
         })
     }, [gameId])
 

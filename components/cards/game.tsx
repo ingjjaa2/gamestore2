@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import {game} from '../../Apollo/repo/game';
+import {game} from '../../interface/game';
 import Image from 'next/image';
 
 const Game = ({game}:{game:game}) => {

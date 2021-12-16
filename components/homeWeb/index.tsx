@@ -5,7 +5,7 @@ import FilterBar from '../filtersBar';
 
 import {AppContext} from '../../context/appContext';
 
-import {game} from '../../Apollo/repo/game';
+import {game} from '../../interface/game';
 
 import GameCard from '../cards/game';
 

@@ -1,13 +1,31 @@
 import React,{useState,useEffect} from 'react';
 import Image from 'next/image';
-import {Games,game} from '../../Apollo/repo/game';
-import {UserAdmin} from '../../Apollo/repo/user';
 import {getGameDataById} from '../../helper/game';
 import GameCard from '../../components/cards/game';
+import {gameHandler} from '../../helper/igdb';
+import {game} from '../../interface/game';
+import dbConnect from '../../db/mongo';
+import {fetchSinToken,fetchConToken} from '../../helper/fetches';
 
-const Index = () => {
+export async function getServerSideProps() {
+    const  client  = await dbConnect();
+  
+    const isConnected = client.connection.readyState;
+    let _listofgame:any = [];
+  
+  
+    if(isConnected===1){
+      _listofgame = await gameHandler();
+    }
+  
+    return {
+      props: { listofgame : JSON.stringify(_listofgame?.data) },
+    }
+  }
 
-    const [state, setstate] = useState({searchBarValue:"",token:"",userValue:"",passwordValue:"",errorMesage:""});
+const Index = (props:any) => {
+
+    const [state, setstate] = useState({searchBarValue:"",token:"",userValue:"jonavi1305@gmail.com",passwordValue:"123456",errorMesage:""});
 
     const [waitingServer, setWaitingServer] = useState(false);
 
@@ -18,11 +36,11 @@ const Index = () => {
     const [activeGames, setActiveGames] = useState<game|undefined>();
 
     useEffect(() => {
-        Games.getAllGames().then(x=>{
-            setListGames(x)
-        });        
+        const {listofgame} = props;
+        setListGames(JSON.parse(listofgame));
+       
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [Games])
+    }, [])
 
     useEffect(() => {
         const _valueText = state.searchBarValue;
@@ -52,13 +70,12 @@ const Index = () => {
     }
 
     const handleLogin=()=>{
-        UserAdmin.logIn(state.userValue,state.passwordValue).then(x=>{
-            if(x){
-                setstate({...state,token:x,errorMesage:""});
-            }else{
+        fetchSinToken({action:'login',data:{email:state.userValue,password:state.passwordValue}})
+            .then((x:any)=>{
+                setstate({...state,token:x?.token,errorMesage:""});
+            }).catch(()=>{
                 setstate({...state,token:"",errorMesage:"Error Login"});
-            }
-        })
+            })
     }
 
     const handleLogOut=()=>{
@@ -97,13 +114,13 @@ const Index = () => {
 
     const handleOnSave=(e:game)=>{
         setWaitingServer(true);
-        Games.createOneGame(e,state.token).then((x)=>{
-            if(x){
-                Games.getAllGames().then(x=>{
+        fetchConToken({data:e,action:'addGame',token:state.token})
+        .then((x:any)=>{
+            if(x!==null){                
+                fetchConToken({action:'listOfgames'}).then((x:any)=>{
                     setActiveGames(undefined);
-                    setListGames(x)}).finally(()=>{
-                        setWaitingServer(false);
-                    });   
+                    setListGames(x)
+                })
             }
         }).finally(()=>{
             setWaitingServer(false);
@@ -113,13 +130,17 @@ const Index = () => {
     const handleDelete=(e:game)=>{
 
         if(e?.id){
-            Games.deleteOneGame(e.id,state.token).then((x)=>{
-                if(x){
-                    Games.getAllGames().then(x=>{
+            setWaitingServer(true);
+            fetchConToken({data:e,action:'deleteGame',token:state.token})
+            .then((x:any)=>{
+                if(x!==null){
+                    fetchConToken({action:'listOfgames'}).then((z:any)=>{
                         setActiveGames(undefined);
-                        setListGames(x);
-                    }) 
+                        setListGames(z)
+                    })
                 }
+            }).finally(()=>{
+                setWaitingServer(false);
             });
         }
 
@@ -274,7 +295,7 @@ const ModalEditCreate=({activeGame,onCloseModal,onSave,saving}:{activeGame:game,
         if(e.key==='Enter'){
             if(state.searchBarValue!==""){
                 setstate({...state,loading:true});
-                Games.getAllGames()
+                // Games.getAllGames()
                 getGameDataById(state.searchBarValue).then(x=>{
                     setListOfPossiblesGames(x);
                 }).catch(error=>{

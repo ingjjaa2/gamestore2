@@ -3,15 +3,28 @@ import {useWindowSizeChange} from '../../hooks/useWindowSizeChange';
 import GameWebView from '../../components/gameWeb';
 import GameMobileView from '../../components/gameMobile';
 
+import dbConnect from '../../db/mongo';
+import {gameHandler} from '../../helper/igdb';
+
+
 export async function getStaticPaths(){
 
-    // aqui va la funcion que saca todos los juegos 
+    const  client  = await dbConnect();
 
+    const isConnected = client.connection.readyState;
+    let _listofgame:any = [];
+    let _paths:any = [];
+
+    if(isConnected===1){
+      _listofgame = await gameHandler();
+      for (let index = 0; index < _listofgame?.data.length; index++) {
+          const game = _listofgame?.data[index];
+          _paths.push({params:{id:`${game?.id}`}})
+        }
+    }
 
     return {
-        paths:[
-            {params:{id:'1'}}
-        ],
+        paths:_paths,
         fallback:true,
     }
 }
