@@ -195,7 +195,7 @@ export default async function handler(
             break;
     
         default:
-            console.log("accion no reconocida")
+            console.log(`accion no reconocida : ${data}`)
             res.status(200).json(null);
             break;
     }
