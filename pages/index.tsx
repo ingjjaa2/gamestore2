@@ -13,7 +13,7 @@ export async function getServerSideProps() {
   const  client  = await dbConnect();
 
   const isConnected = client.connection.readyState;
-  let _listofgame:any = [];
+  let _listofgame:any = {data:[]};
 
 
   if(isConnected===1){
@@ -34,6 +34,7 @@ const Index =(props:any)=>{
 
   useEffect(() => {
     const {listofgame} = props;
+    console.log(listofgame);
     setListGames(JSON.parse(listofgame));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
