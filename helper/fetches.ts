@@ -1,4 +1,5 @@
-const apiRul = 'http://localhost:3000/api/admin';
+const apiRul = `http://localhost:3000/api/admin`;
+// const apiRul = `https://gamestore2-ip80bdqws-jonavi1305-gmailcom.vercel.app/api/admin`;
 
 interface bodyData{
     action:'login'|'addGame'|'deleteGame'|'listOfgames'|'getGameById',
@@ -30,7 +31,8 @@ export const fetchConToken=async({action,data,token=''}:bodyData)=>{
 
     
     const url = `${apiRul}`;
-    
+
+   
       const resp = await fetch(url,{
           method:'POST',
           headers:{

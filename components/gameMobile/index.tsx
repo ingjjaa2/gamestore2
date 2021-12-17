@@ -5,7 +5,7 @@ import {game} from '../../interface/game';
 import Slider,{sliderData} from '../sliderMobile';
 import {fetchSinToken} from '../../helper/fetches';
 
-const Index = ({gameId}:{gameId:string}) => {
+const Index = ({gamePage}:{gamePage:game}) => {
 
     const [activeGame, setActiveGame] = useState<game>();
 
@@ -13,29 +13,25 @@ const Index = ({gameId}:{gameId:string}) => {
 
 
     useEffect(() => {
-        fetchSinToken({action:'getGameById',data:gameId}).then((x:any)=>{
-            if(x){
                 const _multimediaList:sliderData[]=[];
-                setActiveGame(x);
-                x?.videos?.forEach((videoUrl:any) => _multimediaList.push({
+                setActiveGame(gamePage);
+                gamePage?.videos?.forEach((videoUrl:any) => _multimediaList.push({
                     title:"",
                     url:videoUrl,
                     isVideo:true
                 }));
-                x?.images?.forEach((imageUrl:any) => _multimediaList.push({
+                gamePage?.images?.forEach((imageUrl:any) => _multimediaList.push({
                     title:"",
                     url:imageUrl,
                     isVideo:false
                 }));
-                x?.screenshots?.forEach((imageUrl:any) => _multimediaList.push({
+                gamePage?.screenshots?.forEach((imageUrl:any) => _multimediaList.push({
                     title:"",
                     url:imageUrl,
                     isVideo:false
                 }));
                 setMultimediaList(_multimediaList);
-            }
-        })
-    }, [gameId])
+        }, [gamePage])
 
     const HandlePlatformIcon=({platform}:{platform:string})=>{
         switch (platform) {
